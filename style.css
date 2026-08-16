@@ -167,3 +167,54 @@ body {
         font-size: 28px;
     }
 }
+
+/* =========================
+   BUTTON ANIMATION
+========================= */
+
+.btn {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    cursor: pointer;
+}
+
+/* Button press effect */
+.btn:active {
+    transform: scale(0.90);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effect */
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================
+   DISPLAY ANIMATION
+========================= */
+
+#display {
+    transition: all 0.2s ease;
+}
+
+
+/* =========================
+   CALCULATOR ANIMATION
+========================= */
+
+.calculator {
+    animation: calculatorAppear 0.6s ease;
+}
+
+@keyframes calculatorAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
