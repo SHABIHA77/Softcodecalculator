@@ -25,4 +25,5 @@ Softcode Calculator is a simple and user-friendly calculator project built using
 Live demo : https://shabiha77.github.io/Softcodecalculator/
 
 ## 📸 Screenshot
-Screenshot will be added soon.
+<img width="1358" height="617" alt="Screenshot 2026-08-16 220551" src="https://github.com/user-attachments/assets/975fb081-1be0-4f2e-9297-de5d9a2afccc" />
+
