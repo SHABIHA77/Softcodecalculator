@@ -6,15 +6,21 @@ let firstNumber = null;
 let operator = null;
 let waitingForSecondNumber = false;
 
+function animateDisplay() {
+    display.classList.remove("result-animation");
+
+    void display.offsetWidth;
+
+    display.classList.add("result-animation");
+}
+
 buttons.forEach((button) => {
 
     button.addEventListener("click", () => {
 
         const value = button.textContent.trim();
 
-        // =========================
         // NUMBER
-        // =========================
         if (
             !button.classList.contains("operator") &&
             !button.classList.contains("equal") &&
@@ -33,9 +39,7 @@ buttons.forEach((button) => {
             return;
         }
 
-        // =========================
         // DECIMAL
-        // =========================
         if (value === ".") {
 
             expression += ".";
@@ -45,13 +49,10 @@ buttons.forEach((button) => {
             return;
         }
 
-        // =========================
         // OPERATOR
-        // =========================
         if (button.classList.contains("operator")) {
 
             firstNumber = parseFloat(expression);
-
             operator = value;
 
             expression += " " + value + " ";
@@ -63,9 +64,7 @@ buttons.forEach((button) => {
             return;
         }
 
-        // =========================
         // EQUAL
-        // =========================
         if (button.classList.contains("equal")) {
 
             const parts = expression.trim().split(" ");
@@ -96,10 +95,11 @@ buttons.forEach((button) => {
                 result = firstNumber / secondNumber;
             }
 
-            // COMPLETE EXPRESSION + RESULT
             display.value = expression + " = " + result;
 
-            // Prepare for next calculation
+            // Result animation
+            animateDisplay();
+
             expression = String(result);
             firstNumber = null;
             operator = null;
@@ -108,9 +108,7 @@ buttons.forEach((button) => {
             return;
         }
 
-        // =========================
         // AC
-        // =========================
         if (value === "AC") {
 
             expression = "";
@@ -123,9 +121,7 @@ buttons.forEach((button) => {
             return;
         }
 
-        // =========================
         // PLUS / MINUS
-        // =========================
         if (value === "+/-") {
 
             if (expression !== "") {
@@ -140,9 +136,7 @@ buttons.forEach((button) => {
             return;
         }
 
-        // =========================
         // PERCENTAGE
-        // =========================
         if (value === "%") {
 
             if (expression !== "") {
