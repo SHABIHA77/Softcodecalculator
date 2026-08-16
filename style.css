@@ -6,7 +6,6 @@
 
 body {
     min-height: 100vh;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,23 +13,28 @@ body {
     font-family: Arial, sans-serif;
 
     background:
-        radial-gradient(
-            circle at 20% 20%,
-            #f5c8e8,
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
-            #c9b9f2,
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            #e8c9e8,
-            #c7b9ed
-        );
+        radial-gradient(circle at 15% 20%, #f5c8e8, transparent 35%),
+        radial-gradient(circle at 85% 80%, #c9b9f2, transparent 35%),
+        linear-gradient(135deg, #e8c9e8, #c7b9ed);
 
     overflow: hidden;
+
+    animation: backgroundMove 8s ease-in-out infinite alternate;
+}
+
+
+/* =========================
+   BACKGROUND ANIMATION
+========================= */
+
+@keyframes backgroundMove {
+    from {
+        background-position: 0% 0%;
+    }
+
+    to {
+        background-position: 100% 100%;
+    }
 }
 
 
@@ -40,7 +44,6 @@ body {
 
 .calculator {
     width: 350px;
-
     padding: 25px;
 
     border-radius: 28px;
@@ -52,6 +55,7 @@ body {
     backdrop-filter: blur(18px);
 
     box-shadow:
+        0 0 30px rgba(255, 180, 230, 0.35),
         10px 10px 30px rgba(85, 55, 100, 0.25),
         -10px -10px 30px rgba(255, 255, 255, 0.7);
 
@@ -65,17 +69,13 @@ body {
 
 #display {
     width: 100%;
-
     height: 75px;
 
     margin-bottom: 25px;
-
     padding: 15px;
 
     border: none;
-
     outline: none;
-
     border-radius: 18px;
 
     background: rgba(255, 255, 255, 0.35);
@@ -85,7 +85,6 @@ body {
     text-align: right;
 
     font-size: 28px;
-
     font-weight: 600;
 
     box-shadow:
@@ -117,7 +116,6 @@ body {
     height: 65px;
 
     border: none;
-
     outline: none;
 
     border-radius: 50%;
@@ -127,7 +125,6 @@ body {
     color: #a51f55;
 
     font-size: 20px;
-
     font-weight: bold;
 
     cursor: pointer;
@@ -137,8 +134,8 @@ body {
         -6px -6px 14px rgba(255, 255, 255, 0.75);
 
     transition:
-        transform 0.15s ease,
-        box-shadow 0.15s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
         background 0.2s ease;
 }
 
@@ -148,18 +145,19 @@ body {
 ========================= */
 
 .btn:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px) scale(1.03);
 
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.55);
 
     box-shadow:
+        0 0 15px rgba(255, 180, 225, 0.45),
         8px 8px 18px rgba(90, 60, 110, 0.2),
         -8px -8px 18px rgba(255, 255, 255, 0.8);
 }
 
 
 /* =========================
-   CLICK ANIMATION
+   CLICK
 ========================= */
 
 .btn:active {
@@ -172,7 +170,7 @@ body {
 
 
 /* =========================
-   OPERATOR BUTTONS
+   OPERATORS
 ========================= */
 
 .operator {
@@ -181,7 +179,7 @@ body {
 
 
 /* =========================
-   FUNCTION BUTTONS
+   FUNCTIONS
 ========================= */
 
 .function {
@@ -197,9 +195,32 @@ body {
     background: rgba(255, 180, 220, 0.55);
 
     box-shadow:
-        0 0 15px rgba(255, 150, 210, 0.4),
+        0 0 18px rgba(255, 150, 210, 0.5),
         6px 6px 14px rgba(90, 60, 110, 0.2),
         -6px -6px 14px rgba(255, 255, 255, 0.75);
+
+    animation: equalGlow 2s ease-in-out infinite;
+}
+
+
+@keyframes equalGlow {
+    0% {
+        box-shadow:
+            0 0 10px rgba(255, 150, 210, 0.35),
+            6px 6px 14px rgba(90, 60, 110, 0.2);
+    }
+
+    50% {
+        box-shadow:
+            0 0 25px rgba(255, 150, 210, 0.75),
+            6px 6px 14px rgba(90, 60, 110, 0.2);
+    }
+
+    100% {
+        box-shadow:
+            0 0 10px rgba(255, 150, 210, 0.35),
+            6px 6px 14px rgba(90, 60, 110, 0.2);
+    }
 }
 
 
@@ -209,31 +230,23 @@ body {
 
 .zero {
     grid-column: span 2;
-
     border-radius: 35px;
 }
 
 
 /* =========================
-   CALCULATOR APPEAR
+   CALCULATOR ENTRANCE
 ========================= */
 
 @keyframes calculatorAppear {
-
     from {
         opacity: 0;
-
-        transform:
-            translateY(25px)
-            scale(0.95);
+        transform: translateY(25px) scale(0.95);
     }
 
     to {
         opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
+        transform: translateY(0) scale(1);
     }
 }
 
@@ -243,28 +256,23 @@ body {
 ========================= */
 
 #display.result-animation {
-
     animation: resultPop 0.3s ease;
 }
 
 
 @keyframes resultPop {
-
     0% {
         transform: scale(1);
-
         opacity: 0.5;
     }
 
     50% {
         transform: scale(1.05);
-
         opacity: 1;
     }
 
     100% {
         transform: scale(1);
-
         opacity: 1;
     }
 }
@@ -278,7 +286,6 @@ body {
 
     .calculator {
         width: 92%;
-
         padding: 20px;
     }
 
@@ -288,7 +295,6 @@ body {
 
     #display {
         height: 68px;
-
         font-size: 24px;
     }
 }
