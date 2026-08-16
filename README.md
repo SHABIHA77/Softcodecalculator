@@ -22,7 +22,7 @@ Softcode Calculator is a simple and user-friendly calculator project built using
 4. Start using the calculator.
 
 ## 🌐 Live Demo
-Live demo will be added soon.
+Live demo : https://shabiha77.github.io/Softcodecalculator/
 
 ## 📸 Screenshot
 Screenshot will be added soon.
